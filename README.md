@@ -1,48 +1,198 @@
-# Temporal Domain Expertise in Synergy with LLM's World Knowledge: Agentic RAG with Dynamic Evolving Knowledge Graph Based on PrimeKG
+# Synergizing Precise Real-Time Domain Expertise with LLM's Ocean of Knowledge
+## Agentic RAG with Dynamic Evolving Knowledge Graph Based on PrimeKG
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PrimeKG](https://img.shields.io/badge/Knowledge%20Graph-PrimeKG-brightgreen.svg)]()
+[![Graphiti Temporal KG](https://img.shields.io/badge/Dynamic%20KG-Graphiti-blue.svg)]()
 
-A production-ready biomedical knowledge retrieval system that combines **PrimeKG** (Precision Medicine Knowledge Graph) with **Graphiti** for intelligent, context-aware medical information queries. Uses Pydantic AI agents with dual search modes to intelligently traverse both vector embeddings and graph relationships for comprehensive biomedical insights.
+A production-ready biomedical knowledge retrieval system that **bridges curated domain expertise with the expansive reasoning capability of large language models**. Combines **PrimeKG** (129K+ precisely annotated biomedical entities and 4M+ verified relationships) with **Graphiti's temporal knowledge graph** for intelligent, context-aware medical information queries that stay current with evolving scientific understanding. 
+
+Uses **Pydantic AI agents** with dual search modes to intelligently traverse both vector embeddings and dynamic graph relationships, ensuring answers are grounded in verified biomedical facts while leveraging LLM's vast knowledge ocean for synthesis, reasoning, and clinical contextualization—creating a system that is both trustworthy and cognitively powerful.
 
 ## 🎯 Overview
 
-Traditional RAG systems rely solely on vector similarity, missing crucial relationship context in biomedical domains. This system bridges that gap by:
+Medical AI faces a fundamental gap:
+- **LLMs** possess an ocean of world knowledge but lack precision and verifiability in biomedical domains
+- **Knowledge graphs** offer precise, curated facts but remain static and cognitively limited
+- **Hallucinations** from ungrounded LLMs endanger patients; 
+- **Incomplete answers** from static KGs limit clinical utility
 
-- **Combining two complementary search paradigms**: Dense vector search for semantic relevance + Graph traversal for explicit relationships
-- **Leveraging PrimeKG's rich biomedical data**: 129K+ entities and 4M+ relationships across diseases, drugs, proteins, and pathways
-- **Enabling temporal reasoning**: Dynamic knowledge graph management through Graphiti for evolving medical knowledge
-- **Providing flexible LLM support**: Seamlessly switch between OpenAI, Ollama, OpenRouter, and Gemini
+**The Breakthrough**: Synergize **precise real-time domain expertise** (PrimeKG + Graphiti) with **LLM's reasoning and vast knowledge ocean** (synthesis, clinical reasoning, evidence weighing).
+
+### Three Dimensions of Innovation
+
+#### 1. **Precision + Ocean of Knowledge**
+Rather than choosing between verified facts and broad reasoning, this system **harvests both**:
+- **Curated Domain Expertise**: 129K+ precisely annotated biomedical entities from PrimeKG
+- **LLM Ocean Integration**: Leverage billions of biomedical parameters for reasoning and synthesis
+- **Grounded Intelligence**: Every fact traceable to specific KG relationships and molecular targets
+- **Evidence-Aware**: System knows the confidence level of each relationship (high-curated vs. single-study)
+
+#### 2. **Real-Time + Evolving**
+Traditional KGs become stale; raw LLMs lack currency. This system bridges that gap:
+- **Real-time querying**: Latest updated database state is queried by agent on-demand (no stale data)
+- **Dynamic Knowledge Graphs** (Graphiti): Relationships tracked over time with versioning
+- **Easy Updates**: KG can be updated with new research without retraining the model
+- **Temporal reasoning**: Can answer "how has treatment evolved?" and "what changed?"
+
+#### 3. **Trustworthy + Powerful**
+The synergy creates a system stronger than either alone:
+- **Trustworthy**: Answers traceable to specific latest KG relationships and molecular targets
+- **Powerful**: Can handle multi-step reasoning (e.g., "If EGFR is mutated, what pathways are affected, and what drugs target those pathways?")
+- **Transparent**: System can explicitly state what comes from KG vs. LLM reasoning
+- **Safe**: Knows what it doesn't know (Example 2 in demonstrations shows this)
 
 ## ✨ Key Features
 
 ### 🔍 Dual Search Architecture
 - **Vector Search**: Fast semantic similarity matching over clinical descriptions using pgvector
-- **Graph Search**: Relationship-aware traversal for discovering indirect connections and multi-hop pathways
+  - Captures: What does this disease feel like? What are related conditions?
+- **Graph Search**: Relationship-aware traversal discovering indirect connections and multi-hop pathways
+  - Captures: What molecular pathways? What drugs target this? What causes this?
 - **Hybrid Search**: Intelligently combines both methods for comprehensive results
-
-### 📊 Rich Knowledge Base
-- **PrimeKG Integration**: Pre-built precision medicine knowledge graph with 129K+ biomedical entities
-- **4M+ Relationships**: Comprehensive coverage of drug-disease, protein-pathway, gene-phenotype associations
-- **Multiple Entity Types**: Diseases, drugs, proteins, pathways, side effects, and more
+  - Intelligently routes: "Vector search for semantics, graph search for mechanisms"
 
 ### 🧠 Intelligent Agent Design
 - **Pydantic AI Agents**: Type-safe, composable AI agent framework with structured outputs
 - **Multi-tool Reasoning**: Agents autonomously decide which search mode(s) to use based on query intent
-- **Error Recovery**: Graceful fallbacks and retry logic for robust operation
+- **Self-Aware About Knowledge**: System explicitly knows what PrimeKG contains and what it's missing (prevents hallucination)
+- **Error Recovery & Fallback**: Graceful handling when one search mode is insufficient
 
-### 🚀 Production Ready, Always Improvable
+### 🚀 Production Ready (Always Improvable)
 - **FastAPI Backend**: High-performance async API with automatic OpenAPI documentation
 - **Streaming Responses**: Real-time answer streaming for better UX
 - **Comprehensive Error Handling**: Detailed error messages and logging
-- **Database Abstraction**: PostgreSQL with pgvector for embeddings, Neo4j for graph storage
+- **Database Abstraction**: PostgreSQL with pgvector for embeddings, Neo4j for temporal graph storage
 
-### 🔧 Flexible Configuration
+### 🔧 Flexible & Extensible
 - **Multiple LLM Providers**: OpenAI, Ollama (local), OpenRouter, Google Gemini
+  - Swap LLM without changing core logic
 - **Pluggable Embeddings**: Support for different embedding models
-- **Configurable Search Parameters**: Fine-tune search behavior per deployment
+- **Configurable Search Parameters**: Fine-tune precision vs. recall per deployment
+- **Knowledge Graph Updates**: Add new entities/relationships without retraining
 
-## 🏗️ Architecture
+## ⚡ The Synergy Principle: Precision Domain Expertise × LLM Ocean of Knowledge
+
+### The Core Insight
+
+```
+TRADITIONAL APPROACHES:
+
+┌─────────────────────────────────────┐    ┌─────────────────────────────────────┐
+│     LLM-Only ("Ocean")              │    │   Static KG-Only ("Well")           │
+├─────────────────────────────────────┤    ├─────────────────────────────────────┤
+│ ✓ Vast knowledge (billions of       │    │ ✓ Precise facts (curated,           │
+│   parameters = ocean)                │    │   verified, traceable)               │
+│ ✓ Reasoning across domains           │    │ ✓ No hallucinations (grounded)      │
+│ ✓ Contextual synthesis               │    │ ✓ Explainable (show the paths)      │
+│ ✓ Clinical wisdom & nuance           │    │ ✓ Fast & deterministic              │
+│                                      │    │                                      │
+│ ✗ No precision (hallucinations)      │    │ ✗ Limited knowledge (sparse)        │
+│ ✗ Unverifiable (black box)           │    │ ✗ No reasoning (can't synthesize)   │
+│ ✗ Stale & unchanging                 │    │ ✗ Can't handle novel questions      │
+│ ✗ Drift from training data           │    │ ✗ Outdated when research evolves    │
+│                                      │    │                                      │
+│ Real-world risk: Patient harm        │    │ Real-world risk: Missed diagnoses   │
+│ from confident false claims          │    │ from limited knowledge              │
+└─────────────────────────────────────┘    └─────────────────────────────────────┘
+
+
+SYNERGISTIC APPROACH:
+
+┌──────────────────────────────────────────────────────────────────────┐
+│  PRECISION EXPERTISE × OCEAN OF KNOWLEDGE SYNERGY                    │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  PrimeKG (Precise Domain Expertise)                                  │
+│  • 129K+ curated entities, 4M+ verified relationships                │
+│  • Real-time queryable (always current state)                        │
+│  • Temporal tracking (Graphiti) shows evolution                      │
+│  Role: Grounds every answer in verified facts                        │
+│         │                                                             │
+│         ├──► Vector Search: Semantic matching on descriptions        │
+│         │                                                             │
+│         ├──► Graph Search: Relationship traversal & multi-hop paths  │
+│         │                                                             │
+│         └──► Entity Relationships: Precise molecular targets         │
+│                                                                      │
+│                          ▼                                            │
+│         ┌─────────────────────────────┐                              │
+│         │  Verified Biomedical Facts  │                              │
+│         │ "Aspirin inhibits COX-1/2"  │                              │
+│         │ "EGFR mutations cause..."   │                              │
+│         └──────────┬──────────────────┘                              │
+│                    │                                                  │
+│  LLM (Ocean of Knowledge)                                             │
+│  • Billions of biomedical parameters                                 │
+│  • Clinical wisdom across specialties                                │
+│  • Evidence synthesis capability                                     │
+│  Role: Synthesizes, reasons, explains, contextualizes                │
+│         │                                                             │
+│         ├──► Clinical Reasoning: "Why does this work?"               │
+│         │                                                             │
+│         ├──► Evidence Synthesis: "Meta-analysis shows..."            │
+│         │                                                             │
+│         ├──► Personalization: "For YOUR patient consider..."         │
+│         │                                                             │
+│         └──► Multi-step Reasoning: Connects 5+ biomedical concepts  │
+│                                                                      │
+│                          ▼                                            │
+│         ┌──────────────────────────────┐                             │
+│         │ Grounded Intelligent Answer  │                             │
+│         │ "Aspirin prevents colorectal │                             │
+│         │  cancer by COX-1/2 inhibition│                             │
+│         │  reducing prostaglandin-E2   │                             │
+│         │  in epithelial cells..."     │                             │
+│         └──────────────────────────────┘                             │
+│                                                                      │
+│  Result: Trustworthy AND Powerful                                    │
+│  ✓ Every claim traceable to PrimeKG                                  │
+│  ✓ Every explanation enhanced by LLM reasoning                       │
+│  ✓ Dynamic (evolves with new KG data)                                │
+│  ✓ Real-time (current state always)                                  │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+### Four Questions That Reveal the Synergy
+
+| Question | LLM-Ocean Only | Precision-KG Only | Synergistic |
+|----------|-----------------|-------------------|-------------|
+| **"What drugs treat lung cancer?"** | Generates plausible drugs; risk of hallucinating non-existent ones | Returns exact entities in PrimeKG (possibly incomplete) | ✓ Verified drugs from PrimeKG + mechanism explanations from LLM |
+| **"Why does EGFR mutation cause lung cancer?"** | Detailed explanation but potentially inaccurate or outdated | Shows EGFR-cancer relationship but no explanation | ✓ Verified EGFR-cancer link from KG + detailed pathway explanation from LLM |
+| **"What does PrimeKG contain about lung cancer prevention?"** | Hallucinates what might be in KG | Knows exactly what's stored | ✓ Agent queries KG, tells you precisely what's there and what's missing |
+| **"How have lung cancer treatments evolved in the last 5 years?"** | Knowledge cutoff limitation; stale data | No temporal reasoning capability | ✓ Graphiti temporal KG shows evolution + LLM explains significance |
+
+### Why This Matters Clinically
+
+```
+Scenario: Doctor asks "Is metformin useful for cancer prevention?"
+
+LLM-Ocean Only:
+→ "Metformin may reduce cancer risk through AMPK activation..."
+→ Doctor: "But is this in clinical guidelines? How strong is evidence?"
+→ LLM: "Uh... probably... I think so..." (confabulation risk)
+
+Precision-KG Only:
+→ "Drug entity: Metformin. Associated disease: Breast cancer."
+→ Doctor: "But WHY? What's the mechanism? Is it preventive?"
+→ KG: "No explanation available."
+
+Synergistic System:
+→ "PrimeKG shows metformin associated with breast cancer reduction.
+   The mechanism appears to involve AMPK activation reducing 
+   mTOR signaling. However, PrimeKG marks this evidence as 
+   'single-study mechanistic annotation' (lower confidence).
+   Clinical guidelines recommend metformin primarily for diabetes,
+   with cancer prevention as potential additional benefit."
+→ Doctor: ✓ Knows what's verified, what's speculative, what's emerging
+```
+
+---
+
+---
+
 
 
 ### Data Flow Architecture
@@ -83,34 +233,6 @@ Input Query
                     User Response
 ```
 
-### Key Architectural Advantages
-
-#### 1️⃣ **Reduced Hallucination**
-- Graph structure provides grounded facts and explicit relationships
-- Vector search validates semantic similarity with factual verification
-- LLM acts as synthesizer rather than source of knowledge
-
-#### 2️⃣ **Context-Aware Reasoning**
-- Discovers multi-hop relationships (e.g., "What pathways connect this gene to the disease?")
-- Understands entity types and relationship semantics
-- Handles complex biomedical questions requiring relationship reasoning
-
-#### 3️⃣ **Scalability & Efficiency**
-- **Vector Search**: O(log n) retrieval with pgvector indexing
-- **Graph Search**: Efficient relationship lookup with Neo4j
-- **Hybrid Approach**: Falls back gracefully when one method is insufficient
-- Caching layer reduces redundant computations
-
-#### 4️⃣ **Transparency & Interpretability**
-- Search results include explicit relationship paths
-- Users see exactly which entities and relationships informed the answer
-- Audit trail for compliance in clinical settings
-
-#### 5️⃣ **Extensibility**
-- Modular design allows easy addition of new data sources
-- Pluggable LLM providers support latest models
-- Temporal knowledge graph enables version tracking and historical queries
-- Custom tools can be added to agent framework
 
 ## 📋 Project Structure
 
@@ -147,7 +269,9 @@ kg_llm/
 └── README.md               # This file
 ```
 
-## 🎬 Real-World Q&A Demonstration
+## 🎬 Quick Demonstration
+
+### Real-World Q&A Examples
 
 Below are actual conversations demonstrating the system's ability to answer complex biomedical questions by **combining knowledge from PrimeKG with the LLM's reasoning capabilities**. Each example shows:
 
@@ -471,14 +595,7 @@ User Query
 
 ---
 
-### Prerequisites
-- Python 3.10+
-- PostgreSQL 14+ (with pgvector extension)
-- Neo4j 5.0+ (or use Neo4j AuraDB)
-- API keys for your chosen LLM provider
-
-
-### Installation & Configuration
+## Installation & Configuration
 
 See [Instructions.md](./Instructions.md) for detailed setup instructions including:
 - Database initialization
@@ -524,47 +641,6 @@ Investigate sophisticated biomedical questions requiring relationship reasoning:
 "Which therapeutic targets are common between Parkinson's and Alzheimer's disease?"
 ```
 
-### 📊 Query Categories Reference
-
-| Category | Intent | Example |
-|:---------|:-------|:--------|
-| **Symptoms & Manifestations** | Clinical diagnosis & patient education | "What are the early warning signs of heart disease?" |
-| **Mechanisms & Pharmacology** | Understanding drug action & biological processes | "How does metformin improve insulin sensitivity?" |
-| **Relationship Discovery** | Finding associations between entities | "What diseases are linked to high cholesterol?" |
-| **Pathway Analysis** | Mapping biological networks | "What genes are involved in the apoptosis pathway?" |
-| **Comparative Analysis** | Contrasting conditions, treatments, or mechanisms | "What's the difference between bacterial and viral pneumonia?" |
-
-## 🔧 Configuration Options
-
-### Environment Variables
-```bash
-# LLM Provider (choose one)
-LLM_PROVIDER=openai              # Options: openai, ollama, openrouter, gemini
-OPENAI_API_KEY=sk-...
-OLLAMA_BASE_URL=http://localhost:11434
-
-# Database
-POSTGRES_URL=postgresql://user:pass@localhost/kg_llm
-NEO4J_URL=neo4j://localhost:7687
-NEO4J_USER=neo4j
-NEO4J_PASSWORD=password
-
-# Embeddings
-EMBEDDING_MODEL=text-embedding-3-small
-EMBEDDING_DIMENSION=1536
-
-# Search Parameters
-VECTOR_SEARCH_TOP_K=10           # Number of vector results
-GRAPH_SEARCH_MAX_DEPTH=3         # Graph traversal depth
-HYBRID_SEARCH_FUSION_METHOD=rrf  # Reciprocal Rank Fusion
-
-# Graphiti Settings
-GRAPHITI_ENABLED=true
-GRAPHITI_TEMPORAL_GRANULARITY=day
-```
-
-See `.env.example` for all available configuration options.
-
 
 ## 🛠️ API Endpoints
 
@@ -600,7 +676,6 @@ GET /api/v1/health
 ```
 
 See FastAPI docs at `http://localhost:8000/docs` for interactive API exploration.
-
 
 
 ## ⚖️ License
