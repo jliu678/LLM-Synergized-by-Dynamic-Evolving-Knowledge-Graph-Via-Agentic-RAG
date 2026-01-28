@@ -1,0 +1,44 @@
+pydantic-ai
+pydantic>=2.0
+
+# Graphiti for knowledge graph
+graphiti-core
+
+# FastAPI and server
+fastapi
+uvicorn[standard]
+
+# Database drivers
+asyncpg
+neo4j
+
+# HTTP client
+httpx
+
+# Environment and configuration
+python-dotenv
+
+# Data processing
+pandas
+numpy
+
+# OpenAI and embeddings (flexible providers)
+openai
+
+# Testing
+pytest
+pytest-asyncio
+pytest-cov
+
+# Code quality
+black
+ruff
+
+# CLI utilities
+rich
+click
+
+# Additional utilities
+aiofiles
+tenacity
+sentence-transformers
