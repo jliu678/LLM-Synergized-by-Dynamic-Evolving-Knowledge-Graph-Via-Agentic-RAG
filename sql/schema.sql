@@ -34,6 +34,7 @@ CREATE TABLE entities (
 CREATE INDEX idx_entities_node_type ON entities(node_type);
 CREATE INDEX idx_entities_node_name ON entities USING gin(to_tsvector('english', node_name));
 CREATE INDEX idx_entities_description ON entities USING gin(to_tsvector('english', description));
+--- above index is not used by following part of the schema, but is kept for potential future/debug use
 CREATE INDEX idx_entities_metadata ON entities USING gin(metadata);
 
 -- ============================================================================
@@ -112,6 +113,21 @@ CREATE INDEX idx_messages_session_id ON messages(session_id);
 CREATE INDEX idx_messages_created_at ON messages(created_at);
 
 -- ============================================================================
+-- precomputed search vector for full-text search on description + node_name
+-- ============================================================================
+ALTER TABLE entities
+ADD COLUMN search_vector tsvector
+GENERATED ALWAYS AS (
+  to_tsvector(
+    'english',
+    coalesce(description, '') || ' ' || node_name
+  )
+) STORED;
+
+CREATE INDEX idx_entities_search_vector ON entities USING gin(search_vector);
+
+
+-- ============================================================================
 -- SEARCH FUNCTIONS
 -- ============================================================================
 
@@ -176,10 +192,10 @@ BEGIN
         (
             vector_weight * (1 - (ee.embedding <=> query_embedding)) +
             (1 - vector_weight) * ts_rank(
-                to_tsvector('english', COALESCE(e.description, '') || ' ' || e.node_name),
+                e.search_vector,
                 plainto_tsquery('english', query_text)
             )
-        ) as combined_score
+        ) AS combined_score
     FROM entity_embeddings ee
     JOIN entities e ON e.id = ee.entity_id
     WHERE 
@@ -188,6 +204,7 @@ BEGIN
     LIMIT match_count;
 END;
 $$;
+
 
 -- Get entity relationships
 CREATE OR REPLACE FUNCTION get_entity_relationships(
